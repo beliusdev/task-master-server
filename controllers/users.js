@@ -61,41 +61,41 @@ export const getUser = async (req, res, next) => {
   });
 };
 
-// export const changePassword = async (req, res, next) => {
-//   try {
-//     const user = req.user;
+export const changePassword = async (req, res, next) => {
+  try {
+    const user = req.user;
 
-//     let { password, newPassword } = req.body;
+    let { password, newPassword } = req.body;
 
-//     let isPasswordMatch = await user.checkPassword(password);
-//     if (!isPasswordMatch) return next(ApiError.forbidden('Wrong password.'));
+    let isPasswordMatch = await user.checkPassword(password);
+    if (!isPasswordMatch) return next(ApiError.forbidden('Wrong password.'));
 
-//     user.password = newPassword;
-//     await user.save();
+    user.password = newPassword;
+    await user.save();
 
-//     res.status(200);
-//   } catch (error) {
-//     next(error);
-//   }
-// }
+    res.status(200);
+  } catch (error) {
+    next(error);
+  }
+}
 
-// export const editUser = async (req, res, next) => {
-//   try {
-//     const user = req.user;
-//     const { username, email } = req.body;
+export const editUser = async (req, res, next) => {
+  try {
+    const user = req.user;
+    const { username, email } = req.body;
 
-//     user.username = username;
-//     user.email = email;
+    user.username = username;
+    user.email = email;
 
-//     await user.save();
-//     res.status(200).json({
-//       ...user._doc,
-//       password: null
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// }
+    await user.save();
+    res.status(200).json({
+      ...user._doc,
+      password: null
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 export const deleteUser = async (req, res, next) => {
   try {
