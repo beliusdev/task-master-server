@@ -30,8 +30,6 @@ app.use(errorHandler);
 
 connectDatabase();
 
-// todo: make tasks auto deleting, so the tasks will be deleted at 12am, when the new day starts
-
 server = app.listen(PORT, () => console.log(`Server Port: ${PORT}.`));
 
 const exitHandler = terminate(server, {
