@@ -7,7 +7,6 @@ import userRouter from './userRoutes.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.send(ApiError.notFound('Page not found.')));
 router.use('/user', userRouter);
 router.use('/todo', auth, todoRouter);
 
